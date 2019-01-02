@@ -31,10 +31,34 @@
             </div>
             <div class="form-group">
                 <label for="content">내용</label>
-                <textarea class="form-control" id="content" name="content" rows="5" value={{ $article->content }}></textarea>
+                <textarea class="form-control" id="content" name="content" rows="5">{{ $article->content }}</textarea>
             </div>
             <div align="right">
-                <button type="submit" class="btn btn-primary">수정</button>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                수정
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">수정 안내문</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        정말 수정하시겠습니까?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                        <button type="submit" class="btn btn-primary">수정</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
             </div>
         </form>
 

@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Article;
 
-//수정사항 : 수정시 내용이 삭제되있음 -> 저장돼있어야, 삭제시 id 갱신이 안됨 -> 갱신해야, 조회수를 세션 및 바로바로 갱신돼야
-//내용뷰 및 버튼위치 정리해야, 수정시 비밀번호 입력해야 가능, DB에 비밀번호 안보여야, 관리자는 따로 기능할수있도록해야
-//한 페이지당 20목록으로 하고 넘어가야, 수정하거나 삭제 시 '정말로 ' '하시겠습니까? 안내창 뜨게하기, 글작성시 업로드가능하게하기, 추천수 기능
-//답글, 댓글 및 대댓글 기능추가, 로그인 기능, 로그인 작성은 작성자만 수정 및 삭제가 가능, 검색기능, 수정(삭제)가 완료되었습니다 창 뜨게하기
+//수정사항 : 조회수를 세션 및 바로바로 갱신돼야, 새글이 위로 와야
+//수정시 비밀번호 입력해야 가능, DB에 비밀번호 안보여야, 관리자는 따로 기능할수있도록해야
+//한 페이지당 20목록으로 하고 넘어가야, 글작성시 업로드가능하게하기, 추천수 기능, 수정(삭제)가 완료되었습니다 창 뜨게하기
+//답글, 댓글 및 대댓글 기능추가, 로그인 기능, 로그인 작성은 작성자만 수정 및 삭제가 가능, 검색기능, 
 
 class ArticleController extends Controller
 {
@@ -70,7 +70,7 @@ class ArticleController extends Controller
     {
         $article = Article::find($id);
         
-        $article->count ++;
+        $article->count ++; //조회수 증가
         $article->save();
 
         return view('articles.show', compact('article'));

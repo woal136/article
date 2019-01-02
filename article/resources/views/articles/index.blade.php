@@ -22,7 +22,7 @@
             <a href="{{ route('articles.show', $article->id) }}">{{$article->title}}</a>
         </td>
         <td class="text-center">{{$article->name}}</td>
-        <td class="text-center">{{date('Y-m-d', strtotime($article->updated_at))}}</td>
+        <td class="text-center">{{date('Y-m-d', strtotime($article->created_at))}}</td>
         <td class="text-center">{{$article->count}}</td>
       </tr>
     @endforeach  
