@@ -57,7 +57,7 @@ class ArticleController extends Controller
         ]);
         $article->save();
 
-        return redirect('/articles');
+        return redirect('/articles'); //redirect는 post방식에서 써야
     }
 
     /**
