@@ -19,7 +19,9 @@ class ArticleController extends Controller
      */
     public function index() //초기화면 설정
     {
-        $articles = Article::all(); //Article의 모든 목록을 가져옴
+        // $articles = Article::all(); //Article의 모든 목록을 가져옴
+        $query = Article::orderBy('id', 'desc');
+        $articles = $query->paginate(20);
 
         return view('articles.index', compact('articles')); //보여지는 주소는 올바르게 써줘야, compact는 article메소드를 배열로 만듦
     }
@@ -57,7 +59,7 @@ class ArticleController extends Controller
         ]);
         $article->save();
 
-        return redirect('/articles'); //redirect는 post방식에서 써야
+        return redirect()->route('index'); //redirect는 post방식에서 써야
     }
 
     /**
@@ -112,7 +114,7 @@ class ArticleController extends Controller
         $article->content = $request->get('content');
         $article->save();
 
-        return redirect('/articles');
+        return redirect()->route('index');
     }
 
     /**
@@ -126,6 +128,6 @@ class ArticleController extends Controller
         $article = Article::find($id);
         $article->delete();
 
-        return redirect('/articles');
+        return redirect()->route('index');
     }
 }

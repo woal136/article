@@ -11,11 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::resource('articles', 'ArticleController');
+Route::get('/', 'ArticleController@index')->name('index');
+Route::get('/create', 'ArticleController@create')->name('create');
+Route::post('/', 'ArticleController@store')->name('store');
+Route::get('/{id}', 'ArticleController@show')->name('show');
+Route::get('/{id}/edit', 'ArticleController@edit')->name('edit');
+Route::put('/{id}', 'ArticleController@update')->name('update');
+Route::delete('/{id}', 'ArticleController@destroy')->name('destroy');
 
 Auth::routes();
 
